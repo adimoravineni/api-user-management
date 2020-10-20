@@ -1,0 +1,200 @@
+{
+  "provider": {
+    "name": "provider"
+  },
+  "consumer": {
+    "name": "consumer"
+  },
+  "interactions": [
+    {
+      "description": "a valid request for user data",
+      "request": {
+        "method": "GET",
+        "path": "/api/user/management/v1/users/8",
+        "matchingRules": {
+          "path": {
+            "matchers": [
+              {
+                "match": "regex",
+                "regex": "/api/user/management/v1/users/[0-9]+"
+              }
+            ],
+            "combine": "AND"
+          }
+        }
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "Content-Type": "application/json; charset=UTF-8"
+        },
+        "body": {
+          "firstname": "string",
+          "address": {
+            "city": "string",
+            "street": "string",
+            "postcode": "string",
+            "state": "string"
+          },
+          "gender": "string",
+          "title": "string",
+          "lastname": "string"
+        },
+        "matchingRules": {
+          "body": {
+            "$.title": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.firstname": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.lastname": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.gender": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.address.street": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.address.city": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.address.state": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            },
+            "$.address.postcode": {
+              "matchers": [
+                {
+                  "match": "type"
+                }
+              ],
+              "combine": "AND"
+            }
+          },
+          "header": {
+            "Content-Type": {
+              "matchers": [
+                {
+                  "match": "regex",
+                  "regex": "application/json(;\\s?charset=[\\w\\-]+)?"
+                }
+              ],
+              "combine": "AND"
+            }
+          }
+        },
+        "generators": {
+          "body": {
+            "$.title": {
+              "type": "RandomString",
+              "size": 20
+            },
+            "$.firstname": {
+              "type": "RandomString",
+              "size": 20
+            },
+            "$.lastname": {
+              "type": "RandomString",
+              "size": 20
+            },
+            "$.gender": {
+              "type": "RandomString",
+              "size": 20
+            },
+            "$.address.street": {
+              "type": "RandomString",
+              "size": 20
+            },
+            "$.address.city": {
+              "type": "RandomString",
+              "size": 20
+            },
+            "$.address.state": {
+              "type": "RandomString",
+              "size": 20
+            },
+            "$.address.postcode": {
+              "type": "RandomString",
+              "size": 20
+            }
+          }
+        }
+      },
+      "providerStates": [
+        {
+          "name": "user found"
+        }
+      ]
+    },
+    {
+      "description": "a valid request for user data",
+      "request": {
+        "method": "GET",
+        "path": "/api/user/management/v1/users/9",
+        "matchingRules": {
+          "path": {
+            "matchers": [
+              {
+                "match": "regex",
+                "regex": "/api/user/management/v1/users/[0-9]+"
+              }
+            ],
+            "combine": "AND"
+          }
+        }
+      },
+      "response": {
+        "status": 404
+      },
+      "providerStates": [
+        {
+          "name": "user not found"
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "3.0.0"
+    },
+    "pact-jvm": {
+      "version": "4.1.8"
+    }
+  }
+}
