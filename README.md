@@ -2,11 +2,12 @@
 
 ##Overview
 
-This Spring Boot application exposes 2 REST endpoints.
+This Spring Boot Java 11 application exposes 2 REST endpoints.
 
 1. Get User 
 
     Get /api/user/management/v1/users/{Id}
+
 
 2. Update/Patch User
 
@@ -20,13 +21,15 @@ Execute the following maven command or import the project into your favourite ID
     
 Application will run on port 8090.
 
-##Get User
+
+##Get User API
 
 Sample curl command to hit Get User endpoint.
 
     curl --request GET 'http://localhost:8090/api/user/management/v1/users/10001' --header 'Authorization: Basic bWVtYmVyOnBhc3N3b3Jk'
     
-##Update/Patch User
+    
+##Update/Patch User API
 
 Sample curl command to hit Patch User endpoint.
 
@@ -39,6 +42,7 @@ Here is the link to its RFC.
 https://tools.ietf.org/html/rfc7396
 
 Note: On successful update of the user record in database, the API will return the updated record.
+
 
 ##Initial data
 
@@ -55,6 +59,7 @@ ID  	TITLE  	FIRSTNAME  	LASTNAME  	GENDER  	STREET  	CITY  	STATE  	POSTCODE
 10004	Mr	Lloyd	Walls	Male	48 Sunnyside Road	SPECTACLE LAKE	South Australia	5345
 
 10005	Dr	Keven	Wade	Male	41 Ridge Road	TAUNTON	Queensland	4674
+
 
 ##Security
 
@@ -76,9 +81,11 @@ Role: ADMIN
 
 MEMBER users are authorized for Get User endpoint alone. ADMIN users are authorized for both the endpoints.
 
+
 ##Data Layer
 
 Spring Data JPA is used to manage database interactions. Database transactions will timeout after 5 seconds.
+
 
 ##Testing
 
@@ -87,6 +94,7 @@ Tests are added for web layer, service layer and end-to-end integration.
 For now, I have added Pact tests for Get User API alone.
 
 Please execute "mvn test" command to run all the tests.
+
 
 ##Logging
 
